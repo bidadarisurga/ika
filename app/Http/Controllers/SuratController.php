@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SuratRequest;
+use App\Models\Surat;
 use Illuminate\Http\Request;
 
 class SuratController extends Controller
@@ -13,7 +15,9 @@ class SuratController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.surat.index')->with([
+            'items' => Surat::paginate(5)
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class SuratController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.surat.create');
     }
 
     /**
@@ -32,9 +36,10 @@ class SuratController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SuratRequest $request)
     {
         Surat::create($request->all());
+        return redirect()->route('surat.index');
     }
 
     /**
@@ -66,10 +71,11 @@ class SuratController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SuratRequest $request, $id)
     {
-      $surat=Surat::findOrFail($id);
-      $surat->update($request->all());
+        $surat = Surat::findOrFail($id);
+        $surat->update($request->all());
+        return redirect()->route('surat.index');
     }
 
     /**
@@ -81,5 +87,6 @@ class SuratController extends Controller
     public function destroy($id)
     {
         Surat::findOrFail($id)->delete();
+        return redirect()->route('surat.index');
     }
 }

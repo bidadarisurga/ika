@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SuratController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::prefix('/')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', [SuratController::class, 'index']);
+        Route::resource('surat', SuratController::class);
+    });
+
+
+require __DIR__ . '/auth.php';
