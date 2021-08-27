@@ -20,6 +20,7 @@ Route::prefix('/')
     ->middleware('auth')
     ->group(function () {
         Route::get('/', [SuratController::class, 'index']);
+        Route::get('/view', [SuratController::class, 'generatePDF']);
         Route::resource('surat', SuratController::class);
     });
 

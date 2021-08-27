@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SuratRequest;
 use App\Models\Surat;
 use Illuminate\Http\Request;
+use PDF;
 
 class SuratController extends Controller
 {
@@ -26,6 +27,14 @@ class SuratController extends Controller
         return view('pages.surat.index')->with([
             'items' => $surat->paginate(5)
         ]);
+    }
+
+    public function generatePDF()
+    {
+        $data = Surat::all();
+
+        $pdf = PDF::loadView('myPDF', ['data' => $data]);
+        return $pdf->stream();
     }
 
     /**
