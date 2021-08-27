@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SuratController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,9 @@ Route::prefix('/')
     ->middleware('auth')
     ->group(function () {
         Route::get('/', [SuratController::class, 'index']);
+        Route::get('/user', [UserController::class, 'index'])
+            ->middleware('admin')
+            ->name('user');
         Route::get('/view', [SuratController::class, 'generatePDF']);
         Route::resource('surat', SuratController::class);
     });
