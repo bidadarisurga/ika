@@ -13,10 +13,18 @@ class SuratController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $cari = $request->query('cari');
+        $surat = Surat::query();
+
+        $surat->when($cari, function ($q) use ($cari) {
+            $q->where('no_surat', 'like', "%" . $cari . "%");
+        });
+
+
         return view('pages.surat.index')->with([
-            'items' => Surat::paginate(5)
+            'items' => $surat->paginate(5)
         ]);
     }
 
@@ -61,7 +69,9 @@ class SuratController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pages.surat.update')->with([
+            'item' => Surat::find($id)
+        ]);
     }
 
     /**

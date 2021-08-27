@@ -23,11 +23,11 @@
     <li class="nav-item  {{ request()->is('surat.index') ? 'active' : '' }}">
      {{-- <h1 class="h3 mb-0 text-gray-800">DATA EMAIL</h1> --}}
         <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <button type="submit" class="nav-link">
-            <span>Keluar</span></a>
-        </button>
-    </form>
+            @csrf
+            <button type="submit" class="nav-link btn btn-facebook de">
+                <span>Keluar</span></a>
+            </button>
+        </form>
     </li>
 
     {{-- <!-- Nav Item - SKPA -->
