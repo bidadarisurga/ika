@@ -20,6 +20,14 @@
         <span>DASHBOARD</span></a>
     </li>
 
+    @if (Auth::user()->role == 'admin')
+        <li class="nav-item  {{ request()->is('/user') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('user') }}">
+            <i class="fas fa-fw fa-home"></i>
+            <span>USER</span></a>
+        </li>
+    @endif
+
     <li class="nav-item  {{ request()->is('surat.index') ? 'active' : '' }}">
      {{-- <h1 class="h3 mb-0 text-gray-800">DATA EMAIL</h1> --}}
         <form action="{{ route('logout') }}" method="post">

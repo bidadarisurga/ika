@@ -5,14 +5,14 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             {{-- <h1 class="h3 mb-0 text-gray-800">DATA SURAT</h1> --}}
-                {{-- @if (Auth::user()->level == 'admin') --}}
+                @if (Auth::user()->level == 'admin')
                 <a href="{{ route('surat.create') }}" class="btn btn-sm btn-primary shadow-sm">
                     <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Surat
                 </a>
                 <a href="/view" class="btn btn-sm btn-primary shadow-sm">
                     <i class="fas fa-plus fa-sm text-white-50"></i> Download Pdf
                 </a>
-            {{-- @endif --}}
+            @endif
         </div>
 
         <div class="row">
@@ -30,9 +30,9 @@
                             <th>Tindak Lanjut</th>
                             <th>Status</th>
                             <th>Sifat Surat</th>
-                             {{-- @if (Auth::user()->level == 'admin') --}}
+                             @if (Auth::user()->level == 'admin')
                                 <th>Akasi</th>
-                             {{-- @endif --}}
+                             @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +51,7 @@
                                 <td>{{ $item->tindak_lanjut}}</td>
                                 <td>{{ $item->status}}</td>
                                 <td>{{ $item->sifat}}</td>
-                                 {{-- @if (Auth::user()->level == 'admin') --}}
+                                 @if (Auth::user()->level == 'admin')
                                  <td>
                                      <a href="{{ route('surat.edit',$item->id) }}" class="btn btn-info">
                                          <i class="fa fa-pencil-alt"></i>
@@ -65,7 +65,7 @@
                                          </button>
                                      </form>
                                  </td>
-                                {{-- @endif --}}
+                                @endif
                             </tr>
                         @empty
                             <tr>

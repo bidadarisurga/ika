@@ -22,9 +22,9 @@
                         <tr>
                             <th>ID</th>
                             <th>Nama</th>
-                             {{-- @if (Auth::user()->level == 'admin') --}}
+                             @if (Auth::user()->level == 'admin')
                                 <th>Akasi</th>
-                             {{-- @endif --}}
+                             @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +35,7 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $item->name}}</td>
-                                 {{-- @if (Auth::user()->level == 'admin') --}}
+                                 @if (Auth::user()->level == 'admin')
                                  <td>
                                      <a href="{{ route('user',$item->id) }}" class="btn btn-info">
                                          <i class="fa fa-pencil-alt"></i>
@@ -49,7 +49,7 @@
                                          </button>
                                      </form>
                                  </td>
-                                {{-- @endif --}}
+                                @endif
                             </tr>
                         @empty
                             <tr>
