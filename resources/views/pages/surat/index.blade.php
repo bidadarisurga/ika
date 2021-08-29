@@ -5,7 +5,7 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             {{-- <h1 class="h3 mb-0 text-gray-800">DATA SURAT</h1> --}}
-                @if (Auth::user()->level == 'admin')
+                @if (Auth::user()->role == 'admin')
                 <a href="{{ route('surat.create') }}" class="btn btn-sm btn-primary shadow-sm">
                     <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Surat
                 </a>
@@ -30,7 +30,7 @@
                             <th>Tindak Lanjut</th>
                             <th>Status</th>
                             <th>Sifat Surat</th>
-                             @if (Auth::user()->level == 'admin')
+                             @if (Auth::user()->role == 'admin')
                                 <th>Akasi</th>
                              @endif
                         </tr>
