@@ -51,7 +51,7 @@
                                 <td>{{ $item->tindak_lanjut}}</td>
                                 <td>{{ $item->status}}</td>
                                 <td>{{ $item->sifat}}</td>
-                                 @if (Auth::user()->level == 'admin')
+                                 @if (Auth::user()->role == 'admin')
                                  <td>
                                      <a href="{{ route('surat.edit',$item->id) }}" class="btn btn-info">
                                          <i class="fa fa-pencil-alt"></i>
