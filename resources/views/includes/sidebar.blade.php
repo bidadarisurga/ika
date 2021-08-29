@@ -5,9 +5,9 @@
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('surat.index') }}">
         <div class="sidebar-brand-icon rotate-n-15 w-100 p-2">
             {{-- <i class="fas fa-laugh-wink"></i> --}}
-            <img src="{{ url('img/1.png') }}" class="img-fluid img-thumbnail rounded-circle w-100 p-1" alt="">
+            {{-- <img src="{{ url('img/1.png') }}" class="img-fluid img-thumbnail rounded-circle w-100 p-1" alt=""> --}}
+            <div class="sidebar-brand-text mx-3">Kominfo</div>
         </div>
-        <div class="sidebar-brand-text mx-3">Kominfo <sup>Persandian</sup></div>
     </a>
 
     <!-- Divider -->
@@ -23,7 +23,7 @@
     @if (Auth::user()->role == 'admin')
         <li class="nav-item  {{ request()->is('/user') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('user') }}">
-            <i class="fas fa-fw fa-home"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>USER</span></a>
         </li>
     @endif
