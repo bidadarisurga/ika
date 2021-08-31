@@ -14,11 +14,19 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - SKPA -->
-    <li class="nav-item  {{ request()->is('surat.index') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('surat.index') }}">
+    <li class="nav-item  {{ request()->is('/') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ url('/') }}">
         <i class="fas fa-fw fa-home"></i>
         <span>DASHBOARD</span></a>
     </li>
+
+    <!-- Nav Item - SKPA -->
+    <li class="nav-item  {{ request()->is('surat') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('surat.index') }}">
+        <i class="fas fa-fw fa-envelope-open-text"></i>
+        <span>SURAT</span></a>
+    </li>
+
 
     @if (Auth::user()->role == 'admin')
         <li class="nav-item  {{ request()->is('/user') ? 'active' : '' }}">
@@ -27,6 +35,13 @@
             <span>USER</span></a>
         </li>
     @endif
+
+    <li class="nav-item  {{ request()->is('user/'.Auth::user()->id) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('user.edit',Auth::user()->id) }}">
+            <i class="fas fa-fw fa-cogs"></i>
+            <span>Setting</span>
+        </a>
+    </li>
 
     <li class="nav-item  {{ request()->is('surat.index') ? 'active' : '' }}">
      {{-- <h1 class="h3 mb-0 text-gray-800">DATA EMAIL</h1> --}}

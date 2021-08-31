@@ -6,6 +6,8 @@ use App\Http\Requests\SuratRequest;
 use App\Models\Surat;
 use Illuminate\Http\Request;
 use PDF;
+use DataTables;
+
 
 class SuratController extends Controller
 {
@@ -14,19 +16,27 @@ class SuratController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function list()
+    {
+        $data = Surat::all();
+        return Datatables::of($data)
+            ->addColumn('action', function ($data) {
+                return '<a href="data-email/edit/' . $data->id . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil-alt"></i></a> <form action="data-email/hapus/' . $data->id . '" method="delete"> ' . csrf_field() . ' <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash mt-2"></i></button></form>';
+            })
+            ->make(true);
+    }
+
     public function index(Request $request)
     {
-        $cari = $request->query('cari');
-        $surat = Surat::query();
+        // $cari = $request->query('cari');
+        // $surat = Surat::query();
 
-        $surat->when($cari, function ($q) use ($cari) {
-            $q->where('no_surat', 'like', "%" . $cari . "%");
-        });
+        // $surat->when($cari, function ($q) use ($cari) {
+        //     $q->where('no_surat', 'like', "%" . $cari . "%");
+        // });
 
 
-        return view('pages.surat.index')->with([
-            'items' => $surat->paginate(5)
-        ]);
+        return view('pages.surat.index');
     }
 
     public function generatePDF()

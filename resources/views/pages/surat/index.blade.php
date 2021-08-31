@@ -1,5 +1,11 @@
 @extends('layouts.index')
 
+@push('jquery')
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+@endpush
+
 @section('content')
     <div class="container-fluid">
         <!-- Page Heading -->
@@ -17,10 +23,10 @@
 
         <div class="row">
             <div class="card-body">
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="email-table" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            {{-- <th>ID</th> --}}
                             <th>No Surat</th>
                             <th>Tgl Surat</th>
                             <th>Perihal Surat</th>
@@ -35,7 +41,7 @@
                              @endif
                         </tr>
                     </thead>
-                    <tbody>
+                    {{-- <tbody>
                         @php
                             $no = 1;
                         @endphp
@@ -74,11 +80,49 @@
                                 </td>
                             </tr>
                         @endforelse
-                    </tbody>
+                    </tbody> --}}
                 </table>
-                {{ $items->links() }}
+                {{-- {{ $items->links() }} --}}
             </div>
         </div>
-
     </div>
 @endsection
+
+@push('script')
+    <!-- jQuery -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- DataTables -->
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- App scripts -->
+    <script>
+    $(function() {
+        var admin = 'admin'
+        var user = {{Auth::user()->role }}
+        let cols = [
+                { data: 'no_surat', name: 'no_surat' },
+                { data: 'tgl_surat', name: 'tgl_surat' },
+                { data: 'perihal', name: 'perihal' },
+                { data: 'no_adm', name: 'no_adm' },
+                { data: 'tgl_adm', name: 'tgl_adm' },
+                { data: 'distribusi', name: 'distribusi' },
+                { data: 'tindak_lanjut', name: 'tindak_lanjut' },
+                { data: 'status', name: 'status' },
+                { data: 'sifat', name: 'sifat' },
+
+            ]
+
+            if ( user == admin) {
+                cols.push({data: 'action', name: 'action'})
+            }
+
+        $('#email-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: 'list',
+            columns:cols
+        });
+    });
+</script>
+@endpush
