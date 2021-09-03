@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\auth;
+use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -16,12 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Route::prefix('/')
     ->middleware('auth')
     ->group(function () {
 
+        Route::get('log', [SuperAdminController::class, 'index'])->name('log');
         Route::get('list', [SuratController::class, 'list']);
 
 

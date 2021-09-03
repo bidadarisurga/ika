@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\LogActivity;
 use App\Http\Requests\SuratRequest;
 use App\Models\Surat;
 use Illuminate\Http\Request;
 use PDF;
 use DataTables;
-
+use Illuminate\Support\Facades\Auth;
 
 class SuratController extends Controller
 {
@@ -18,6 +19,7 @@ class SuratController extends Controller
      */
     public function list()
     {
+
         $data = Surat::all();
         return Datatables::of($data)
             ->addColumn('action', function ($data) {
@@ -28,19 +30,15 @@ class SuratController extends Controller
 
     public function index(Request $request)
     {
-        // $cari = $request->query('cari');
-        // $surat = Surat::query();
-
-        // $surat->when($cari, function ($q) use ($cari) {
-        //     $q->where('no_surat', 'like', "%" . $cari . "%");
-        // });
-
+        LogActivity::addToLog(Auth::user()->role . ' liat halaman surat.');
 
         return view('pages.surat.index');
     }
 
     public function generatePDF()
     {
+        LogActivity::addToLog(Auth::user()->role . ' download surat.');
+
         $data = Surat::all();
 
         $pdf = PDF::loadView('myPDF', ['data' => $data]);
@@ -65,6 +63,8 @@ class SuratController extends Controller
      */
     public function store(SuratRequest $request)
     {
+        LogActivity::addToLog(Auth::user()->role . ' tambah surat.');
+
         Surat::create($request->all());
         return redirect()->route('surat.index');
     }
@@ -102,6 +102,8 @@ class SuratController extends Controller
      */
     public function update(SuratRequest $request, $id)
     {
+        LogActivity::addToLog(Auth::user()->role . ' edit surat.');
+
         $surat = Surat::findOrFail($id);
         $surat->update($request->all());
         return redirect()->route('surat.index');
@@ -115,6 +117,8 @@ class SuratController extends Controller
      */
     public function destroy($id)
     {
+        LogActivity::addToLog(Auth::user()->role . ' hapus surat.');
+
         Surat::findOrFail($id)->delete();
         return redirect()->route('surat.index');
     }

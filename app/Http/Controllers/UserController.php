@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\LogActivity;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index(Request $request)
     {
+        LogActivity::addToLog(Auth::user()->role . ' liat halaman user.');
+
         $cari = $request->query('cari');
         $user = User::query();
 
@@ -32,6 +36,8 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        LogActivity::addToLog(Auth::user()->role . ' update user.');
+
         $user = User::findOrFail($id);
         $data = $request->all();
         // $data['password'] = Hash::make($request->paswword);
