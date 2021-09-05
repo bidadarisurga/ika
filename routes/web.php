@@ -4,6 +4,7 @@ use App\Http\Controllers\auth;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\UserController;
+use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,17 +22,29 @@ Route::prefix('/')
     ->middleware('auth')
     ->group(function () {
 
-        Route::get('log', [SuperAdminController::class, 'index'])->name('log');
-        Route::get('list', [SuratController::class, 'list']);
+        Route::get('log', [SuperAdminController::class, 'index'])
+            ->middleware('superAdmin')
+            ->name('log');
+
+        Route::get('list', [SuratController::class, 'list'])->name('list');
 
 
         Route::get('/', [auth::class, 'index']);
+
+
+        Route::get('/users', [UserController::class, 'create'])->name('user.create');
+        Route::post('/users', [UserController::class, 'store'])->name('user.store');
+        Route::delete('/users/{id}', [UserController::class, 'destroy'])
+            ->name('user.delete');
+
+
         Route::get('/user', [UserController::class, 'index'])
             ->middleware('admin')
             ->name('user');
 
         Route::get('/user/{id}', [UserController::class, 'edit'])
             ->name('user.edit');
+
 
         Route::put('/user/{id}', [UserController::class, 'update'])
             ->name('user.update');

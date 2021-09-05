@@ -5,14 +5,14 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">DATA User</h1>
-                {{-- @if (Auth::user()->level == 'admin') --}}
-                {{-- <a href="{{ route('surat.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                    <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Surat
-                </a> --}}
+                @if (Auth::user()->role == 'admin')
+                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data User
+                </a>
+                @endif
                 {{-- <a href="/view" class="btn btn-sm btn-primary shadow-sm">
                     <i class="fas fa-plus fa-sm text-white-50"></i> Download Pdf
                 </a> --}}
-            {{-- @endif --}}
         </div>
 
         <div class="row">
@@ -22,7 +22,8 @@
                         <tr>
                             <th>ID</th>
                             <th>Nama</th>
-                             @if (Auth::user()->level == 'admin')
+                            <th>level</th>
+                             @if (Auth::user()->role == 'admin')
                                 <th>Akasi</th>
                              @endif
                         </tr>
@@ -35,12 +36,13 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $item->name}}</td>
-                                 @if (Auth::user()->level == 'admin')
+                                <td>{{ $item->role}}</td>
+                                 @if (Auth::user()->role == 'admin')
                                  <td>
-                                     <a href="{{ route('user',$item->id) }}" class="btn btn-info">
+                                     <a href="{{ route('user.edit',$item->id) }}" class="btn btn-info">
                                          <i class="fa fa-pencil-alt"></i>
                                      </a>
-                                     <form action="{{ route('user',$item->id) }}" method="post" class="d-inline">
+                                     <form action="{{ route('user.delete',$item->id) }}" method="post" class="d-inline">
                                          @csrf
                                          @method('delete')
 

@@ -27,6 +27,8 @@
                             <th>Ip</th>
                             <th width="300px">User Agent</th>
                             <th>User Name</th>
+                            <th width="300px">Waktu</th>
+                            <th width="300px">Tangal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +44,8 @@
                                 <td class="text-warning">{{ $item->ip }}</td>
                                 <td class="text-danger">{{ $item->agent }}</td>
                                 <td>{{ $item->user_name }}</td>
+                                <td>{{ $item->time }}</td>
+                                <td>{{ $item->tanggal }}</td>
                             </tr>
                         @empty
                             <tr>

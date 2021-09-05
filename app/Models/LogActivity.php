@@ -12,6 +12,6 @@ class LogActivity extends Model
     protected $table = 'log_activity';
 
     protected $fillable = [
-        'subject', 'url', 'method', 'ip', 'agent', 'user_name'
+        'subject', 'url', 'method', 'ip', 'agent', 'user_name', 'time', 'tanggal'
     ];
 }

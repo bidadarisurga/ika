@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-    <!-- Topbar Search -->
+    {{-- <!-- Topbar Search -->
     <form action="{{ route('surat.index') }}" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="GET">
         @csrf
         <div class="input-group">
@@ -10,5 +10,5 @@
                 </button>
             </div>
         </div>
-    </form>
+    </form> --}}
 </nav>

@@ -3,11 +3,11 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('surat.index') }}">
-        <div class="sidebar-brand-icon rotate-n-15 w-100 p-2">
+        <div class="sidebar-brand-icon p-1">
             {{-- <i class="fas fa-laugh-wink"></i> --}}
-            {{-- <img src="{{ url('img/1.png') }}" class="img-fluid img-thumbnail rounded-circle w-100 p-1" alt=""> --}}
-            <div class="sidebar-brand-text mx-3">Kominfo</div>
+            <img src="{{ url('1.png') }}" class="rounded-circle w-100 p-1" alt="">
         </div>
+        <div class="sidebar-brand-text mx-3">Kominfo</div>
     </a>
 
     <!-- Divider -->
@@ -27,13 +27,13 @@
         <span>SURAT</span></a>
     </li>
 
-    <!-- Nav Item - SKPA -->
-    <li class="nav-item  {{ request()->is('log') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('log') }}">
-        <i class="fas fa-fw fa-clipboard-check"></i>
-        <span>Log Aktivity</span></a>
-    </li>
-
+    @if (Auth::user()->role == 'super admin')
+        <li class="nav-item  {{ request()->is('log') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('log') }}">
+            <i class="fas fa-fw fa-clipboard-check"></i>
+            <span>Log Aktivity</span></a>
+        </li>
+    @endif
 
     @if (Auth::user()->role == 'admin')
         <li class="nav-item  {{ request()->is('/user') ? 'active' : '' }}">
@@ -43,12 +43,15 @@
         </li>
     @endif
 
+    @if (Auth::user()->role == 'user')
     <li class="nav-item  {{ request()->is('user/'.Auth::user()->id) ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('user.edit',Auth::user()->id) }}">
             <i class="fas fa-fw fa-cogs"></i>
             <span>Setting</span>
         </a>
     </li>
+    @endif
+
 
     <li class="nav-item  {{ request()->is('surat.index') ? 'active' : '' }}">
      {{-- <h1 class="h3 mb-0 text-gray-800">DATA EMAIL</h1> --}}

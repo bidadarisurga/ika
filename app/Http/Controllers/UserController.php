@@ -26,6 +26,21 @@ class UserController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('pages.user.create');
+    }
+
+    public function store(Request $request)
+    {
+        LogActivity::addToLog(Auth::user()->role . ' admin tambah user.');
+
+        $data = $request->all();
+        $data['password'] = Hash::make($request->password);
+        User::create($data);
+        return redirect()->route('user');
+    }
+
     public function edit($id)
     {
         $user = User::findOrFail($id);
@@ -45,5 +60,13 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/');
+    }
+
+    public function destroy($id)
+    {
+        LogActivity::addToLog(Auth::user()->role . ' update user.');
+
+        User::findOrFail($id)->delete();
+        return redirect()->route('user');
     }
 }

@@ -34,6 +34,13 @@
                         <input type="email" name="email" id="email" placeholder="Email" value="{{  $item->email }}" class="form-control">
                     </div>
 
+                    @if (Auth::user()->role == 'admin')
+                        <div class="form-group">
+                            <label for="level">level</label>
+                            <input type="text" name="role" id="level" placeholder="level" value="{{  $item->role }}" class="form-control">
+                        </div>
+                    @endif
+
                     <button type="submit" class="btn btn-primary btn-block">Ubah</button>
                 </form>
             </div>

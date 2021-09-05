@@ -63,7 +63,7 @@
                         <select name="status" class="form-control">
                             <option value="Tidak Dapat Diproses">Tidak Dapat Diproses</option>
                             <option value="Belum Diproses">Belum Diproses</option>
-                            <option value="Dalam Proses">Belum Diproses</option>
+                            <option value="Dalam Proses">Dalam Diproses</option>
                             <option value="Selesai">Selesai</option>
                         </select>
                     </div>

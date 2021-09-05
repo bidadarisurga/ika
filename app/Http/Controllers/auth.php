@@ -12,11 +12,13 @@ class auth extends Controller
     {
         $surat = Surat::count();
         $user = User::count();
+        $suratBelom = Surat::where('status', '=', 'Belum Diproses')->count();
 
         return view('dasboard')->with(
             [
                 'user' => $user,
-                'surat' => $surat
+                'surat' => $surat,
+                'suratBelom' => $suratBelom
             ]
         );
     }

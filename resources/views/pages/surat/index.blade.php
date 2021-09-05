@@ -11,14 +11,17 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             {{-- <h1 class="h3 mb-0 text-gray-800">DATA SURAT</h1> --}}
-                {{-- @if (Auth::user()->role == 'admin') --}}
-                <a href="{{ route('surat.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                    <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Surat
-                </a>
-                <a href="/view" class="btn btn-sm btn-primary shadow-sm">
-                    <i class="fas fa-plus fa-sm text-white-50"></i> Download Pdf
-                </a>
-            {{-- @endif --}}
+                @if (Auth::user()->role == 'user')
+                    <a href="{{ route('surat.create') }}" class="btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Surat
+                    </a>
+                @endif
+
+                @if (Auth::user()->role == 'admin')
+                    <a href="/view" class="btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-plus fa-sm text-white-50"></i> Download Pdf
+                    </a>
+                @endif
         </div>
 
         <div class="row">
@@ -27,6 +30,7 @@
                     <thead>
                         <tr>
                             {{-- <th>ID</th> --}}
+                            <th>No</th>
                             <th>No Surat</th>
                             <th>Tgl Surat</th>
                             <th>Perihal Surat</th>
@@ -36,7 +40,7 @@
                             <th>Tindak Lanjut</th>
                             <th>Status</th>
                             <th>Sifat Surat</th>
-                             @if (Auth::user()->role == 'admin')
+                             @if (Auth::user()->role == 'user')
                                 <th>Akasi</th>
                              @endif
                         </tr>
@@ -57,9 +61,13 @@
     <!-- App scripts -->
     <script>
     $(function() {
-        var admin = 'admin'
-        var user = {{Auth::user()->role }}
+        var user = "{{Auth::user()->role }}"
         let cols = [
+                {
+                    "data": 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
+                },
                 { data: 'no_surat', name: 'no_surat' },
                 { data: 'tgl_surat', name: 'tgl_surat' },
                 { data: 'perihal', name: 'perihal' },
@@ -71,8 +79,7 @@
                 { data: 'sifat', name: 'sifat' },
 
             ]
-
-            if ( user == admin) {
+            if ( user == 'user') {
                 cols.push({data: 'action', name: 'action'})
             }
 
