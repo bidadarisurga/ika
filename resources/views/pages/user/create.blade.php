@@ -6,7 +6,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Tambah Data Surat</h1>
+            <h1 class="h3 mb-0 text-gray-800">Tambah User</h1>
         </div>
 
         @if ($errors->any())
@@ -25,22 +25,22 @@
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama</label>
-                        <input type="text" name="name" id="nama" placeholder="masukan kode dinas" value="{{ old('nama') }}" class="form-control">
+                        <input type="text" name="name" id="nama" placeholder="Masukkan Nama" value="{{ old('nama') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="masukan kode dinas" value="{{ old('email') }}" class="form-control">
+                        <input type="email" name="email" id="email" placeholder="Masukan Email" value="{{ old('email') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="role">Level</label>
-                        <input type="text" name="role" id="role" placeholder="masukan nama dinas" value="{{ old('role') }}" class="form-control">
+                        <input type="text" name="role" id="role" placeholder="ex: super admin, admin, user" value="{{ old('role') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="text" name="password" id="password" placeholder="masukan nama dinas" value="{{ old('password') }}" class="form-control">
+                        <input type="text" name="password" id="password" placeholder="Masukan Password" value="{{ old('password') }}" class="form-control">
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block">Simpan</button>
