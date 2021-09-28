@@ -26,6 +26,9 @@ Route::prefix('/')
             ->middleware('superAdmin')
             ->name('log');
 
+        Route::get('/add-admin', [SuperAdminController::class, 'create'])->name('admin.create');
+        Route::post('/add-admin', [SuperAdminController::class, 'store'])->name('admin.store');
+
         Route::get('list', [SuratController::class, 'list'])->name('list');
 
 
@@ -34,6 +37,10 @@ Route::prefix('/')
 
         Route::get('/users', [UserController::class, 'create'])->name('user.create');
         Route::post('/users', [UserController::class, 'store'])->name('user.store');
+
+        Route::get('/ganti-password', [UserController::class, 'viewGantiPass'])->name('change-password.create');
+        Route::put('/ganti-password/{id}', [UserController::class, 'gantiPassword'])->name('change-password.store');
+
         Route::delete('/users/{id}', [UserController::class, 'destroy'])
             ->name('user.delete');
 

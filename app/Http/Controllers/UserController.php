@@ -69,4 +69,24 @@ class UserController extends Controller
         User::findOrFail($id)->delete();
         return redirect()->route('user');
     }
+
+    public function viewGantiPass()
+    {
+        return view('pages.user.ganti-passwor');
+    }
+
+    public function gantiPassword(Request $request, $id)
+    {
+        $request->validate(
+            [
+                'password' => ['required', 'confirmed'],
+            ]
+        );
+
+        $data['password'] = Hash::make($request->password);
+        $user = User::findOrFail($id);
+        $user->fill($data);
+        $user->save();
+        return redirect()->route('user');
+    }
 }
