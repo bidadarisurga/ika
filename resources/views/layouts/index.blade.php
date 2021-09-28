@@ -13,6 +13,8 @@
 
   @stack('jquery')
 @include('includes.style')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
 
 </head>
 
