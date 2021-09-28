@@ -31,7 +31,7 @@
         <li class="nav-item  {{ request()->is('log') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('log') }}">
             <i class="fas fa-fw fa-clipboard-check"></i>
-            <span>Log Aktivity</span></a>
+            <span>LOG ACTIVITY</span></a>
         </li>
     @endif
 
@@ -47,7 +47,7 @@
     <li class="nav-item  {{ request()->is('user/'.Auth::user()->id) ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('user.edit',Auth::user()->id) }}">
             <i class="fas fa-fw fa-cogs"></i>
-            <span>Setting</span>
+            <span>SETTING</span>
         </a>
     </li>
     @endif
@@ -58,7 +58,7 @@
         <form action="{{ route('logout') }}" method="post">
             @csrf
             <button type="submit" class="nav-link btn btn-facebook de">
-                <span>Keluar</span></a>
+                <span>KELUAR</span></a>
             </button>
         </form>
     </li>

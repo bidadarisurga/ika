@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Dinas Kominfo Persandian</title>
+  <title>Dinas Kominfo Sumut</title>
 
   @stack('jquery')
 @include('includes.style')
@@ -48,7 +48,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; tes {{ date('Y') }}</span>
+            <span>Copyright &copy; Ika Wulandari {{ date('Y') }}</span>
           </div>
         </div>
       </footer>

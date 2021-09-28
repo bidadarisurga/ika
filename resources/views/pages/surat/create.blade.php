@@ -25,37 +25,37 @@
                     @csrf
                     <div class="form-group">
                         <label for="no_surat">No Surat</label>
-                        <input type="text" name="no_surat" id="no_surat" placeholder="masukan kode dinas" value="{{ old('no_surat') }}" class="form-control">
+                        <input type="text" name="no_surat" id="no_surat" placeholder="Masukan nomor surat" value="{{ old('no_surat') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="tgl_surat">Tanggal Surat</label>
-                        <input type="date" name="tgl_surat" id="tgl_surat" placeholder="masukan kode dinas" value="{{ old('tgl_surat') }}" class="form-control">
+                        <input type="date" name="tgl_surat" id="tgl_surat" placeholder="Masukan tanggal surat" value="{{ old('tgl_surat') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="perihal">Perlihal</label>
-                        <input type="text" name="perihal" id="perihal" placeholder="masukan nama dinas" value="{{ old('perihal') }}" class="form-control">
+                        <label for="perihal">Perihal</label>
+                        <input type="text" name="perihal" id="perihal" placeholder="Masukan perihal surat" value="{{ old('perihal') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="no_adm">No Administrasi</label>
-                        <input type="text" name="no_adm" id="no_adm" placeholder="masukan nama dinas" value="{{ old('no_adm') }}" class="form-control">
+                        <input type="text" name="no_adm" id="no_adm" placeholder="Masukan No Surat" value="{{ old('no_adm') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="tgl_adm">tanggal Administrasi</label>
-                        <input type="text" name="tgl_adm" id="tgl_adm" placeholder="masukan nama dinas" value="{{ old('tgl_adm') }}" class="form-control">
+                        <label for="tgl_adm">Tanggal Administrasi</label>
+                        <input type="text" name="tgl_adm" id="tgl_adm" placeholder="Masukan Tanggal Administrasi" value="{{ old('tgl_adm') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="distribusi">Distribusi</label>
-                        <input type="text" name="distribusi" id="distribusi" placeholder="masukan nama dinas" value="{{ old('distribusi') }}" class="form-control">
+                        <input type="text" name="distribusi" id="distribusi" placeholder="Masukan Distribusi surat" value="{{ old('distribusi') }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="tindak_lanjut">Tindak Lanjut</label>
-                        <input type="text" name="tindak_lanjut" id="tindak_lanjut" placeholder="masukan nama dinas" value="{{ old('tindak_lanjut') }}" class="form-control">
+                        <input type="text" name="tindak_lanjut" id="tindak_lanjut" placeholder="Tidak Lanjut Surat" value="{{ old('tindak_lanjut') }}" class="form-control">
                     </div>
 
                     <div class="form-group col-5 d-inline-block">
