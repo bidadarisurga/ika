@@ -24,7 +24,7 @@ class SuratController extends Controller
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($data) {
-                return '<a href="data-email/edit/' . $data->id . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil-alt"></i></a> <form action="data-email/hapus/' . $data->id . '" method="delete"> ' . csrf_field() . ' <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash mt-2"></i></button></form>';
+                return '<a href="/surat/' . $data->id . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil-alt"></i></button></form>';
             })
             ->make(true);
     }

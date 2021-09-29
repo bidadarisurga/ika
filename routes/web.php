@@ -56,8 +56,11 @@ Route::prefix('/')
         Route::put('/user/{id}', [UserController::class, 'update'])
             ->name('user.update');
 
+        Route::get('/surat/{id}', [SuratController::class, 'edit']);
+        Route::delete('/surat/hapus/{id}', [SuratController::class, 'destroy']);
+
         Route::get('/view', [SuratController::class, 'generatePDF']);
-        Route::resource('surat', SuratController::class);
+        Route::resource('surat', SuratController::class)->except('edit');
     });
 
 
